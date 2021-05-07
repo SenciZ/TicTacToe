@@ -4,3 +4,24 @@
     margin: 0;
     text-decoration: none;
 }
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameboard{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 40vh;
+    height: 40vh;
+
+}
+
+.field{
+    border: 1px black solid;
+
+}
