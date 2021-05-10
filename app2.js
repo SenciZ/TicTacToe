@@ -1,5 +1,5 @@
-const Gameboard = (function () {
-  return [null, null, null, null, null, null, null, null, null];
+const Gameboard = (()=>{
+  return [null, null , null, null, null, null, null, null, null];
 })();
 
 const Players = function (name, mark) {
@@ -11,7 +11,7 @@ const Players = function (name, mark) {
   return { name, mark, placeMark };
 };
 
-const visualGameboard = (function () {
+const visualGameboard = (()=>{
   const gameboard = document.querySelector(".gameboard");
   for (let i = 0; i < 9; i++) {
     let field = document.createElement("div");
@@ -19,15 +19,12 @@ const visualGameboard = (function () {
     field.id = i;
     field.addEventListener("click", function(e) {
       let identifier = e.target.id;
-      Player1.placeMark(identifier);
+      Player2.placeMark(identifier);
     });
     gameboard.appendChild(field);
   }
 })();
 
-// const gameControl = (function(){
-
-// })();
 
 const Player1 = Players("Mark", "X");
 const Player2 = Players("John", "O");
