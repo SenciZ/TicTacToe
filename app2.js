@@ -1,34 +1,33 @@
-const Gameboard = (function(){
-    return [];
+const Gameboard = (function () {
+  return [null, null, null, null, null, null, null, null, null];
 })();
 
-const Players = function(name, mark){
-    let placeMark = function(){
-        Gameboard.push(mark)
-        let field = document.querySelector(".field")
-        field.textContent = mark;
-    }
-    return {name, mark, placeMark}
+const Players = function (name, mark) {
+  let placeMark = function (identifier) {
+    Gameboard[identifier] = mark;
+    let field = document.querySelectorAll(".field");
+    field[identifier].textContent = Gameboard[identifier];
+  };
+  return { name, mark, placeMark };
 };
 
-
-const visualGameboard = (function(){
-    let gameboard = document.querySelector(".gameboard");
-
-    for (let i = 0; i < 9; i++) {
-      let field = document.createElement("div");
-      field.classList.add("field");
-      field.id = i;
-      field.addEventListener("click", function(){
-          if(field.textContent === ""){
-            Player1.placeMark();
-          } else if (field.textContent === "X"){
-              return;   
-          } else if (field.textContent === "O"){
-              return;
-          }
-
-      })
-      gameboard.appendChild(field);
-    }
+const visualGameboard = (function () {
+  const gameboard = document.querySelector(".gameboard");
+  for (let i = 0; i < 9; i++) {
+    let field = document.createElement("div");
+    field.classList.add("field");
+    field.id = i;
+    field.addEventListener("click", function(e) {
+      let identifier = e.target.id;
+      Player1.placeMark(identifier);
+    });
+    gameboard.appendChild(field);
+  }
 })();
+
+// const gameControl = (function(){
+
+// })();
+
+const Player1 = Players("Mark", "X");
+const Player2 = Players("John", "O");
