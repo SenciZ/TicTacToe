@@ -31,9 +31,9 @@ const Gameboard = (function(){
 
 const placeMark = (function(player){
   let mark ="";
-  if(player === player1){
+  if(player === Player1){
     mark = "x";
-  } else if(player === player2) {
+  } else if(player === Player2) {
     mark = "O";
   }
 

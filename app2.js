@@ -1,5 +1,5 @@
-const Gameboard = (()=>{
-  return [null, null , null, null, null, null, null, null, null];
+const Gameboard = (() => {
+  return [null, null, null, null, null, null, null, null, null];
 })();
 
 const Players = function (name, mark) {
@@ -11,20 +11,22 @@ const Players = function (name, mark) {
   return { name, mark, placeMark };
 };
 
-const visualGameboard = (()=>{
-  const gameboard = document.querySelector(".gameboard");
-  for (let i = 0; i < 9; i++) {
-    let field = document.createElement("div");
-    field.classList.add("field");
-    field.id = i;
-    field.addEventListener("click", function(e) {
+const gameFields = (function () {
+  let fields = document.querySelectorAll(".field");
+  for (let i = 0; i < fields.length; i++) {
+    addEventListener("click", function(e) {
       let identifier = e.target.id;
-      Player2.placeMark(identifier);
+      playerTurn.playerToGo.placeMark(identifier);
     });
-    gameboard.appendChild(field);
   }
 })();
 
 
+
 const Player1 = Players("Mark", "X");
 const Player2 = Players("John", "O");
+
+const playerTurn = (function(){
+  let playerToGo = Player2;
+  return {playerToGo}
+})();
