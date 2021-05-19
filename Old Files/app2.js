@@ -7,7 +7,9 @@ const Players = function (name, mark) {
     Gameboard[identifier] = mark;
     let field = document.querySelectorAll(".field");
     field[identifier].textContent = Gameboard[identifier];
+    currentPlayer.playerIs = player2;
   };
+
   return { name, mark, placeMark };
 };
 
@@ -21,12 +23,14 @@ const gameFields = (function () {
   }
 })();
 
-
+let currentPlayer = (function(){
+    let playerIs;
+})();
 
 const Player1 = Players("Mark", "X");
 const Player2 = Players("John", "O");
 
 const playerTurn = (function(){
-  let playerToGo = Player2;
+  let playerToGo = Player1;
   return {playerToGo}
 })();

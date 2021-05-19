@@ -1,44 +1,50 @@
-// const gameBoardy = (function () {
-//   let gameArray = [];
-//   let gameboard = document.querySelector(".gameboard");
-
-//   for (let i = 0; i < 9; i++) {
-//     let field = document.createElement("div");
-//     field.classList.add("field");
-//     field.id = i
-//     field.addEventListener("click", function(){
-//       player1.placeMark();
-//     })
-//     gameboard.appendChild(field);
-//   }
-//   return {gameArray, field};
-// })();
-
-const Player = (player, x_or_o) => {
-  const placeMark = function(x_or_o){
-    gameBoardy.gameArray.push(x_or_o)
-  }
-  return { player, x_or_o, placeMark};
-};
-
-let player1 = Player("Toby", "x");
-let player2 = Player("Steve", "o");
-
-
 const Gameboard = (function(){
-  return [];
+  let gameboard = [];
+  let decision = function(gameboard){
+    if(gameboard === ["X", "O", "X"]){
+    console.log("Win");
+  } else {
+    console.log("No Win")
+  }};
+  return {gameboard, decision};
 })();
 
-const placeMark = (function(player){
-  let mark ="";
-  if(player === Player1){
-    mark = "x";
-  } else if(player === Player2) {
-    mark = "O";
+const gridCreate = (function() {
+  let gameboardGrid = document.querySelector(".gameboard");
+  for (let i = 0; i < 9; i++) {
+    let field = document.createElement("div");
+    field.classList.add("field");
+    field.id = i
+    field.addEventListener("click", function(e){
+      let identifier = e.target.id;
+      currentPlayer.player.placeMark(identifier);
+      if(currentPlayer.player === player1){
+        currentPlayer.player = player2;
+      } else if (currentPlayer.player === player2){
+        currentPlayer.player = player1;
+      };
+    })
+    gameboardGrid.appendChild(field);
   }
+  return {gameboardGrid};
+})();
 
-  let putMark = function(){
-    Gameboard.push(mark);
-  }
-  return {putMark}
+const Players = function (name, mark) {
+  let placeMark = function (identifier) {
+    Gameboard.gameboard[identifier] = mark;
+    let field = document.querySelectorAll(".field");
+    field[identifier].textContent = Gameboard.gameboard[identifier];
+    Gameboard.decision(Gameboard.gameboard);
+  };
+
+  return { name, mark, placeMark };
+};
+
+let player1 = Players("Toby", "X")
+let player2 = Players("Joby", "O")
+
+
+let currentPlayer = (function(){
+  let player = player1
+  return {player};
 })();
