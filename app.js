@@ -39,6 +39,8 @@ const Gameboard = (function () {
     [2, 4, 6],
   ];
 
+  let winnerDeclared = false;
+
   // check winner
   const decision = function () {
     winningCombos.forEach((item) => {
@@ -48,10 +50,11 @@ const Gameboard = (function () {
         Gameboard.gameboard[item[2]] === currentPlayer.player.mark
       ) {
         gridCreate.winnerDisplay.textContent = `Player ${currentPlayer.player.mark} Wins!`;
+        Gameboard.winnerDeclared = true;
       }
     });
   };
-  return { gameboard, decision };
+  return { gameboard, decision, winnerDeclared };
 })();
 
 const start = (function () {
@@ -64,10 +67,13 @@ const start = (function () {
         );
       }
       gridCreate.griddy();
+      Gameboard.winnerDeclared = false;
+
       currentPlayer.player = player1;
       Gameboard.gameboard = [];
     } else {
       gridCreate.griddy();
+      Gameboard.winnerDeclared = false;
       currentPlayer.player = player1;
     }
   });
@@ -83,11 +89,15 @@ const gridCreate = (function () {
       field.id = i;
       field.addEventListener("click", function (e) {
         let identifier = e.target.id;
-        currentPlayer.player.placeMark(identifier);
-        if (currentPlayer.player === player1) {
-          currentPlayer.player = player2;
-        } else if (currentPlayer.player === player2) {
-          currentPlayer.player = player1;
+        if (Gameboard.winnerDeclared === true) {
+          return;
+        } else {
+          currentPlayer.player.placeMark(identifier);
+          if (currentPlayer.player === player1) {
+            currentPlayer.player = player2;
+          } else if (currentPlayer.player === player2) {
+            currentPlayer.player = player1;
+          }
         }
       });
       gameboardGrid.appendChild(field);
@@ -97,10 +107,8 @@ const gridCreate = (function () {
   return { gameboardGrid, griddy, winnerDisplay };
 })();
 
-
 // Factory function to create players
 const Players = function (name, mark) {
-
   // Creates a placeMark Method on each player that the factory creates
   let placeMark = function (identifier) {
     Gameboard.gameboard[identifier] = mark;
