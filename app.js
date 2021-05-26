@@ -1,6 +1,6 @@
 const Gameboard = (function () {
   let gameboard = [];
-  let decision = function (item, field) {
+  let decision = function (item) {
     if (
       (item[0] === "X" && item[1] === "X" && item[2] === "X") ||
       (item[0] === "X" && item[3] === "X" && item[6] === "X") ||
@@ -11,9 +11,9 @@ const Gameboard = (function () {
       (item[3] === "X" && item[4] === "X" && item[5] === "X") ||
       (item[1] === "X" && item[4] === "X" && item[7] === "X")
     ) {
-      gridCreate.winnerDisplay.textContent = "X";
+      gridCreate.winnerDisplay.textContent = "Player X Wins!";
     } else if (
-      (item[0] === "X" && item[1] === "X" && item[2] === "X") ||
+      (item[0] === "O" && item[1] === "O" && item[2] === "O") ||
       (item[0] === "O" && item[3] === "O" && item[6] === "O") ||
       (item[2] === "O" && item[5] === "O" && item[8] === "O") ||
       (item[6] === "O" && item[7] === "O" && item[8] === "O") ||
@@ -22,7 +22,7 @@ const Gameboard = (function () {
       (item[3] === "O" && item[4] === "O" && item[5] === "O") ||
       (item[1] === "O" && item[4] === "O" && item[7] === "O")
     ) {
-      gridCreate.winnerDisplay.textContent = "O";
+      gridCreate.winnerDisplay.textContent = "Player O Wins!";
     } else {
       console.log("No Win");
     }
@@ -41,8 +41,11 @@ const start = (function () {
         );
       }
       gridCreate.griddy();
+      currentPlayer.player = player1;
+      Gameboard.gameboard = [];
     } else {
       gridCreate.griddy();
+      currentPlayer.player = player1;
     }
   });
 })();
@@ -50,7 +53,6 @@ const start = (function () {
 const gridCreate = (function () {
   let winnerDisplay = document.querySelector(".winner");
   let gameboardGrid = document.querySelector(".gameboard");
-  let id;
   let griddy = function () {
     for (let i = 0; i < 9; i++) {
       let field = document.createElement("div");
@@ -67,6 +69,7 @@ const gridCreate = (function () {
       });
       gameboardGrid.appendChild(field);
     }
+    gridCreate.winnerDisplay.textContent = "Player X Start";
   };
   return { gameboardGrid, griddy, winnerDisplay };
 })();
