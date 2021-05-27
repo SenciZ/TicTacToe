@@ -1,32 +1,5 @@
 const Gameboard = (function () {
   let gameboard = [];
-  // let decision = function (item) {
-  //   if (
-  //     (item[0] === "X" && item[1] === "X" && item[2] === "X") ||
-  //     (item[0] === "X" && item[3] === "X" && item[6] === "X") ||
-  //     (item[2] === "X" && item[5] === "X" && item[8] === "X") ||
-  //     (item[6] === "X" && item[7] === "X" && item[8] === "X") ||
-  //     (item[6] === "X" && item[4] === "X" && item[2] === "X") ||
-  //     (item[0] === "X" && item[4] === "X" && item[8] === "X") ||
-  //     (item[3] === "X" && item[4] === "X" && item[5] === "X") ||
-  //     (item[1] === "X" && item[4] === "X" && item[7] === "X")
-  //   ) {
-  //     gridCreate.winnerDisplay.textContent = "Player X Wins!";
-  //   } else if (
-  //     (item[0] === "O" && item[1] === "O" && item[2] === "O") ||
-  //     (item[0] === "O" && item[3] === "O" && item[6] === "O") ||
-  //     (item[2] === "O" && item[5] === "O" && item[8] === "O") ||
-  //     (item[6] === "O" && item[7] === "O" && item[8] === "O") ||
-  //     (item[6] === "O" && item[4] === "O" && item[2] === "O") ||
-  //     (item[0] === "O" && item[4] === "O" && item[8] === "O") ||
-  //     (item[3] === "O" && item[4] === "O" && item[5] === "O") ||
-  //     (item[1] === "O" && item[4] === "O" && item[7] === "O")
-  //   ) {
-  //     gridCreate.winnerDisplay.textContent = "Player O Wins!";
-  //   } else {
-  //     console.log("No Win");
-  //   }
-  // };
 
   const winningCombos = [
     [0, 1, 2],
@@ -56,7 +29,6 @@ const Gameboard = (function () {
   };
   return { gameboard, decision, winnerDeclared };
 })();
-
 
 const start = (function () {
   let startBtn = document.querySelector(".startGame");
