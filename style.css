@@ -1,31 +1,70 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.container{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Varela+Round&display=swap");
 
-.gameboard{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    width: 40vh;
-    height: 40vh;
-
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+}
+.container {
+  background-color: #340958;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.field{
-    border: 1px black solid;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: 5em;
-    text-align: center;
+.gameboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 40vh;
+  height: 40vh;
+  font-family: "Varela Round", sans-serif;
+}
+
+.field {
+  background-color: #eae6ee;
+  display: flex;
+  border: 1px #260741 solid;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 600;
+  font-size: 3em;
+  text-align: center;
+  text-justify: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.field:hover {
+  background-color: #9984ab;
+}
+
+.startGame {
+  font-family: "Roboto", sans-serif;
+  color: #f2f2f2;
+  background-color: #509d10;
+  border-radius: 3px;
+  border: none;
+  padding: 10px 25px;
+  margin-bottom: 20px;
+  box-shadow: #260741 2px 2px 5px;
+}
+
+.startGame:hover {
+  background-color: #72b03f;
+  color: #340958;
+}
+
+.startGame:focus{
+    border: none;
+    outline: none;
+}
+
+.winner {
+  margin-bottom: 5px;
+  color: #9984ab;
+  font-family: "Roboto", sans-serif;
 }

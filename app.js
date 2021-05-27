@@ -57,6 +57,7 @@ const Gameboard = (function () {
   return { gameboard, decision, winnerDeclared };
 })();
 
+
 const start = (function () {
   let startBtn = document.querySelector(".startGame");
   startBtn.addEventListener("click", function () {
