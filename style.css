@@ -36,7 +36,28 @@
   text-justify: center;
   align-items: center;
   justify-content: center;
+  animation: appear 250ms ease-out;
+
 }
+
+.field p {
+  animation: appear 1s ease-out;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 600;
+  animation: appear 250ms ease-out;
+}
+
+
+@keyframes appear {
+    0% {
+      opacity: 0;
+      /* transform: scale(.95); */
+    }
+    100% {
+      opacity: 1;
+      /* transform: scale(1); */
+    }
+  }
 
 .field:hover {
   background-color: #9984ab;

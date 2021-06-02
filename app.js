@@ -87,7 +87,7 @@ const Players = function (name, mark) {
     Gameboard.gameboard[identifier] = mark;
     let field = document.querySelectorAll(".field");
     if (field[identifier].textContent === "") {
-      field[identifier].textContent = mark;
+      field[identifier].innerHTML = `<p>${mark}</p>`;
     } else {
       return;
     }
